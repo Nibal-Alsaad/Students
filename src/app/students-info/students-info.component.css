@@ -1,0 +1,24 @@
+.nav li{
+    margin: 1px;
+    
+}
+.nav li a{
+    color: white;
+}
+
+.pagination{
+    float: right;
+}
+.td-btn
+{
+width:150px;
+}
+.div-gender{
+    color: white;
+    text-align: center;
+    width: auto;
+    
+}
+td {
+    vertical-align: middle;
+}

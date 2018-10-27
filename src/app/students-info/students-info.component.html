@@ -1,0 +1,76 @@
+<div class="container-fluid ">
+<h3>List of Students</h3>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Name<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+      <th>Email<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+      <th>NickName<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+      <th>BirthDate<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+      <th>Gender<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+      <th></th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{s.name}}</td>
+        <td>{{s.email}}</td>
+        <td>{{s.nickName}}</td>
+        <td>{{s.birtDate}}</td>
+        <td>
+          <div class="rounded div-gender" 
+          [ngStyle]="{
+            'background':s.gender ? '#28a745' : 'deeppink'
+            }" >
+            <span 
+            class="fa" 
+            [ngClass]="{
+              'fa-male':s.gender,
+              'fa-female':!s.gender
+              }">
+          </span>
+          <span >{{" "+getGender(s.gender)}}</span> 
+        </div>
+        </td>
+        <td class="td-btn">
+        <div class="nav nav-pills" >
+          <li 
+           class="btn btn-sm btn-success">
+          <a [routerLink]="['/view',s.id]">
+            <span class="fa fa-search-plus">             
+            </span>
+          </a>
+         </li>         
+          <li
+          class="btn btn-sm btn-warning"  >
+          <a [routerLink]="['/edit',s.id]">
+            <span class="fa fa-pencil-square-o">           
+            </span>
+         </a>
+         </li>
+          <li 
+          class="btn btn-sm btn-danger">
+        <a [routerLink]="['/delete',s.id]">
+            <span class="fa fa-times">          
+              </span>
+        </a>
+      </li>  
+        </div>
+      </td>
+      </tr>
+    </tbody>
+
+</table>
+      
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" [routerLink]="['/student',page-1]"><span class="fa fa-chevron-left"></span></a></li>
+    <li class="page-item"><a class="page-link" routerLink="/student/1">1</a></li>
+    <li class="page-item"><a class="page-link" routerLink="/student/2">2</a></li>
+    <li class="page-item"><a class="page-link" routerLink="/student/3">3</a></li>
+    <li class="page-item"><a class="page-link" [routerLink]="['/student',page-(-1)]"><span class="fa fa-chevron-right"></span></a></li>
+  </ul>
+  <div class="count_info">
+    <strong>Displaying {{(page*10-10)-(-1)}} to {{page*10}} items</strong>
+  </div>
+
+</div>
